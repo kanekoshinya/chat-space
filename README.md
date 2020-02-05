@@ -30,7 +30,8 @@ Things you may want to cover:
 |password|string|null: false|
 |username|string|null: false|
 ### Association
-- has_many :user_groups
+- has_many :groups,through::users_groups
+- has_many :users_groups
 - has_many :comments
 
 ## commentsテーブル
@@ -50,7 +51,8 @@ Things you may want to cover:
 
 ### Association
 - has_many :comments
-- has_many  :user_groups
+- has many :users through::users_groups
+- has_many :users_groups
 
 ## users_groupsテーブル
 |Column|Type|Options|
