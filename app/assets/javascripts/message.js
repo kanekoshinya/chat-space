@@ -1,10 +1,8 @@
 $(function(){
   function buildHTML(message){
-    console.log(message.id);
     if (message.image){
       var html =
-     `<div class="messages">
-        <div class="message" data-message-id="${message.id}">
+       `<div class="message" data-message-id="${message.id}">
           <div class="message__name">
             <div class="message__name--name">
               ${message.user_name}
@@ -19,13 +17,11 @@ $(function(){
             </p>
           </div>
         </div>
-        <img src=${message.image} >
-      </div>`
+        <img src=${message.image} >`
       return html;
     }else{
       var html =
-     `<div class="messages">
-        <div class="message" data-message-id="${message.id}">
+       `<div class="message" data-message-id="${message.id}">
           <div class="message__name">
             <div class="message__name--name">
               ${message.user_name}
@@ -39,8 +35,7 @@ $(function(){
               ${message.content}
             </p> 
           </div>
-        </div> 
-      </div>`
+        </div>`
       return html;
     };
   }
@@ -71,7 +66,7 @@ $(function(){
   });
   var reloadMessages = function() {
     last_message_id = $('.message:last').data("message-id");
-    console.log(last_message_id);
+    
     $.ajax({
       url: "api/messages",
       type: 'get',
@@ -86,6 +81,7 @@ $(function(){
       });
       $('.messages').append(insertHTML);
       $('.chat-main__message-list').animate({ scrollTop: $('.messages')[0].scrollHeight});
+      
      }
     })
     .fail(function() {
